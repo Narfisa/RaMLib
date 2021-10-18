@@ -1,5 +1,8 @@
 <template>
-  <episodes />
+  <div class="root">
+    <p class="episodes-title">Episodes</p>
+    <episodes />
+  </div>
 </template>
 
 <script>
@@ -13,3 +16,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.episodes-title {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 1.5rem;
+}
+</style>
