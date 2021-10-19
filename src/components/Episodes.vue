@@ -1,6 +1,13 @@
 <template>
   <div class="episodes-root">
-    <v-text-field clearable v-model="search" label="Search" />
+    <v-row>
+      <v-col cols="8">
+        <v-text-field v-model="search" label="Search" />
+      </v-col>
+      <v-col cols="4">
+        <v-select v-model="select" :items="seasons" label="Seasons"></v-select>
+      </v-col>
+    </v-row>
     <v-sheet>
       <v-slide-group show-arrows class="grey lighten-3">
         <v-slide-item v-for="episode in filteredList" :key="episode.id">
@@ -13,7 +20,7 @@
 
 <style scoped>
 .item {
-  margin-right: 0.18%;
+  margin-right: 20px;
 }
 
 .episodes-root {
@@ -31,6 +38,8 @@ export default {
   data: () => ({
     episodes: [],
     search: "",
+    seasons: ["Season 1", "Season 2", "Season 3", "Season 4"],
+    select: "",
   }),
 
   mounted() {
@@ -39,7 +48,15 @@ export default {
 
   computed: {
     filteredList() {
-      return this.episodes.filter((item) => {
+      let filterArr = this.episodes;
+      if (this.select != "") {
+        filterArr = filterArr.filter((item) => {
+          let season = this.seasons.indexOf(this.select) + 1;
+          console.log(season);
+          return item.episode.includes(`S0${season}`);
+        });
+      }
+      return filterArr.filter((item) => {
         return item.name.toLowerCase().includes(this.search.toLowerCase());
       });
     },
@@ -50,7 +67,7 @@ export default {
       let next = URL + "episode";
       axios.get(next).then((response) => {
         this.episodes = response.data.results;
-        let next = response.data.info.next;
+        next = response.data.info.next;
         axios.get(next).then((response) => {
           this.episodes.push(...response.data.results);
           next = response.data.info.next;
