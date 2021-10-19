@@ -25,10 +25,6 @@ export default {
     },
   },
 
-  mounted() {
-    console.log(this.episode);
-  },
-
   computed: {
     text() {
       let season = Number(this.episode.episode.substr(1, 2));

@@ -1,16 +1,23 @@
 <template>
-  <v-sheet>
-    <v-slide-group show-arrows class="grey lighten-3">
-      <v-slide-item v-for="episode in episodes" :key="episode.id">
-        <episode class="item" :episode="episode" />
-      </v-slide-item>
-    </v-slide-group>
-  </v-sheet>
+  <div class="episodes-root">
+    <v-text-field clearable v-model="search" label="Search" />
+    <v-sheet>
+      <v-slide-group show-arrows class="grey lighten-3">
+        <v-slide-item v-for="episode in filteredList" :key="episode.id">
+          <episode class="item" :episode="episode" />
+        </v-slide-item>
+      </v-slide-group>
+    </v-sheet>
+  </div>
 </template>
 
 <style scoped>
 .item {
   margin-right: 0.18%;
+}
+
+.episodes-root {
+  padding: 10px;
 }
 </style>
 
@@ -23,10 +30,19 @@ export default {
   components: { Episode },
   data: () => ({
     episodes: [],
+    search: "",
   }),
 
   mounted() {
     this.getAllEpisodes();
+  },
+
+  computed: {
+    filteredList() {
+      return this.episodes.filter((item) => {
+        return item.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
   },
 
   methods: {
