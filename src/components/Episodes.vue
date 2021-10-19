@@ -24,7 +24,7 @@
 }
 
 .episodes-root {
-  padding: 10px;
+  padding: 30px;
 }
 </style>
 

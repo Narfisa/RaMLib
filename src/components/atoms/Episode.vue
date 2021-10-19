@@ -1,10 +1,12 @@
 <template>
-  <v-card class="my-12 card-root" max-width="250">
-    <v-img
-      height="150"
-      src="https://cdnimg.rg.ru/i/gallery/2cff9087/1_cbc57cab.jpg"
-    ></v-img>
-
+  <v-card class="my-12" max-width="250">
+    <router-link :to="'episode/' + String(episode.id)">
+      <v-img
+        class="img"
+        height="150"
+        src="https://cdnimg.rg.ru/i/gallery/2cff9087/1_cbc57cab.jpg"
+      />
+    </router-link>
     <v-card-title class="title"> {{ episode.name }}</v-card-title>
 
     <v-card-text> {{ text }} </v-card-text>
@@ -17,13 +19,7 @@
 
 <script>
 export default {
-  props: {
-    episode: {
-      name: String,
-      episode: Number,
-      air_date: Date,
-    },
-  },
+  props: ["episode"],
 
   computed: {
     text() {
@@ -42,7 +38,7 @@ export default {
   overflow-wrap: normal;
 }
 
-.card-root:hover {
+.img:hover {
   cursor: pointer;
 }
 </style>
