@@ -8,7 +8,7 @@
         <v-select v-model="select" :items="seasons" label="Seasons"></v-select>
       </v-col>
     </v-row>
-    <v-sheet>
+    <v-sheet class="m-auto p-auto">
       <v-slide-group show-arrows class="grey lighten-3">
         <v-slide-item v-for="episode in filteredList" :key="episode.id">
           <episode class="item" :episode="episode" />
@@ -52,7 +52,6 @@ export default {
       if (this.select != "") {
         filterArr = filterArr.filter((item) => {
           let season = this.seasons.indexOf(this.select) + 1;
-          console.log(season);
           return item.episode.includes(`S0${season}`);
         });
       }
