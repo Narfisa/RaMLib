@@ -13,18 +13,6 @@
   </v-card>
 </template>
 
-<style scoped>
-.title {
-  word-break: normal;
-  word-wrap: normal;
-  overflow-wrap: normal;
-}
-
-.img:hover {
-  cursor: pointer;
-}
-</style>
-
 <script>
 const axios = require("axios").default;
 
@@ -42,3 +30,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.title {
+  word-break: normal;
+  word-wrap: normal;
+  overflow-wrap: normal;
+}
+
+.img:hover {
+  cursor: pointer;
+}
+</style>

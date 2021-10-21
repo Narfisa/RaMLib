@@ -13,14 +13,19 @@
       </div>
     </div>
 
-    <p class="characters">Characters in the episode:</p>
-    <v-sheet class="m-auto p-auto">
-      <v-slide-group show-arrows class="grey lighten-3">
-        <v-slide-item v-for="character in episode.characters" :key="character">
-          <character class="mx-2" :link="character" />
-        </v-slide-item>
-      </v-slide-group>
-    </v-sheet>
+    <div>
+      <p class="characters">Characters in the episode:</p>
+      <v-sheet>
+        <v-slide-group show-arrows class="grey lighten-3">
+          <v-slide-item
+            v-for="character in episode.characters"
+            :key="character"
+          >
+            <character class="mx-2" :link="character" />
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
+    </div>
   </div>
 </template>
 
