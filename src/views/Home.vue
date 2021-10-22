@@ -5,12 +5,16 @@
 
     <p class="episodes-title">Characters</p>
     <characters />
+
+    <p class="episodes-title">Locations</p>
+    <locations />
   </div>
 </template>
 
 <script>
 import Episodes from "../components/Episodes";
 import Characters from "../components/Characters.vue";
+import Locations from "../components/Locations.vue";
 
 export default {
   name: "Home",
@@ -18,6 +22,7 @@ export default {
   components: {
     Episodes,
     Characters,
+    Locations,
   },
 };
 </script>
