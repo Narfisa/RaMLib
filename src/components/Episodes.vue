@@ -31,7 +31,7 @@
 <script>
 import Episode from "./atoms/Episode.vue";
 const axios = require("axios").default;
-const URL = "https://rickandmortyapi.com/api/";
+const URL = "https://rickandmortyapi.com/api/episode";
 
 export default {
   components: { Episode },
@@ -62,19 +62,14 @@ export default {
   },
 
   methods: {
-    getAllEpisodes() {
-      let next = URL + "episode";
-      axios.get(next).then((response) => {
-        this.episodes = response.data.results;
-        next = response.data.info.next;
-        axios.get(next).then((response) => {
-          this.episodes.push(...response.data.results);
+    async getAllEpisodes() {
+      let next = URL;
+      while (next) {
+        await axios.get(next).then((response) => {
           next = response.data.info.next;
-          axios.get(next).then((response) => {
-            this.episodes.push(...response.data.results);
-          });
+          this.episodes.push(...response.data.results);
         });
-      });
+      }
     },
   },
 };

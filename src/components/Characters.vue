@@ -69,7 +69,6 @@ export default {
           this.characters.push(...response.data.results);
         });
       }
-      console.log(this.characters);
     },
   },
 };
