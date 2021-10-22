@@ -1,5 +1,5 @@
 <template>
-  <v-card class="my-12" width="200">
+  <v-card class="my-12" width="200" v-if="episodeData">
     <router-link :to="'/episode/' + String(episodeData.id)">
       <v-img
         class="img"

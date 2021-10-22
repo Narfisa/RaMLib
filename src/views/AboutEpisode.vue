@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Character from "./atoms/Character.vue";
+import Character from "../components/atoms/Character.vue";
 const axios = require("axios").default;
 const URL = "https://rickandmortyapi.com/api/episode/";
 

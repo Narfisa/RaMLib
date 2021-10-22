@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Episode from "./atoms/Episode.vue";
+import Episode from "../components/atoms/Episode.vue";
 const axios = require("axios").default;
 const URL = "https://rickandmortyapi.com/api/character/";
 
